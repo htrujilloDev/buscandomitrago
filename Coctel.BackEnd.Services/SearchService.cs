@@ -16,7 +16,7 @@ namespace Coctel.BackEnd.Services
         }
         public async Task<Object> GstSearchByName(string name) 
         {
-            var sEndPoint = "www.thecocktaildb.com/api/json";
+            var sEndPoint = "https://www.thecocktaildb.com/api/json";
             var url = $"{sEndPoint}/v1/1/search.php?s={name}";
 
             try
