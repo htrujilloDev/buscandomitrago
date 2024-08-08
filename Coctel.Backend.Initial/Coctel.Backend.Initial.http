@@ -1,0 +1,6 @@
+@Coctel.Backend.Initial_HostAddress = http://localhost:5272
+
+GET {{Coctel.Backend.Initial_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
