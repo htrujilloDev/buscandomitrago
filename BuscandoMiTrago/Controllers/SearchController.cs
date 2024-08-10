@@ -26,9 +26,9 @@ namespace BuscandoMiTrago.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Search()
+        public async Task<IActionResult> Search(string name)
         {
-            string name = "Mojito";
+            //string name = "Mojito";
             List<VMBuscandoTragosResponse> lstBuscandoTrago= new List<VMBuscandoTragosResponse>();
 
             var sEndPoint = "https://localhost:7277/api";
@@ -52,8 +52,9 @@ namespace BuscandoMiTrago.Controllers
                     vm.strAlcoholic = item.strAlcoholic;
                     vm.strGlass = item.strGlass;
                     vm.strDrinkThumb = item.strDrinkThumb;
+                    lstBuscandoTrago.Add(vm);
                 }
-                lstBuscandoTrago.Add(vm);
+                
                
                 
               

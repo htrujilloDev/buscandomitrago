@@ -5,5 +5,15 @@
 <div class="text-center">
     <h1 class="display-4">Buscando mí trago</h1><br />
     <img src="https://www.thecocktaildb.com/images/cocktail_left.png" />
-    <div><button type="button" class="btn btn-warning">@Html.ActionLink("Buscar", "Search", "Search")</button></div>
+    <div>
+       
+        @using (Html.BeginForm("Search", "Search", FormMethod.Get))
+        {
+            <p>
+                Buscar por: @Html.TextBox("name")<br/>
+                <input type="submit" value="Buscar" class="btn btn-warning" />
+            </p>
+        }
+        
+   </div>
 </div>
