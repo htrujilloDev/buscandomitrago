@@ -1,6 +1,95 @@
-﻿@{
-    ViewData["Title"] = "Buscando...";
-}
-<h1>@ViewData["Title"]</h1>
+﻿@model IEnumerable<BuscandoMiTrago.Models.ViewModels.VMBuscandoTragosResponse>
 
-<p>texto de prueba.</p>
+@{
+    ViewData["Title"] = "Search";
+}
+
+<h1>Search</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.idDrink)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.strDrink)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.strDrinkAlternate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.strTags)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.strVideo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.strCategory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.strIBA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.strAlcoholic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.strGlass)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.strInstructions)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.strDrinkThumb)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idDrink)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.strDrink)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.strDrinkAlternate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.strTags)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.strVideo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.strCategory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.strIBA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.strAlcoholic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.strGlass)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.strInstructions)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.strDrinkThumb)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

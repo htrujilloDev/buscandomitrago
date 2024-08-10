@@ -15,5 +15,6 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.20.1" />
     <PackageReference Include="DevExtreme.AspNet.Core" Version="24.1.4" />
     <PackageReference Include="DevExtreme.AspNet.Data" Version="4.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.3" />
   </ItemGroup>
 </Project>

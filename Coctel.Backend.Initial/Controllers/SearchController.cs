@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Coctel.Backend.Initial.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class SearchController : ControllerBase
     {
@@ -17,18 +17,13 @@ namespace Coctel.Backend.Initial.Controllers
         }
 
 
-        [HttpGet("search")]
-        //[ProducesResponseType(typeof(RenBalanceInfoResponse), StatusCodes.Status200OK)]
+        [HttpGet]        
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
-        public async Task<IActionResult> searchbyname(string name)
-        {
-           // Object RenBalanceInfoResponse = new RenBalanceInfoResponse();
-            
+        public async Task<IActionResult> SearchByName(string name)
+        {          
                var response = await searchService.GstSearchByName(name);
-           
-
 
             return Ok(response);
         }
