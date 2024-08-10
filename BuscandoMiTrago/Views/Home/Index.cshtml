@@ -3,14 +3,14 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Buscando mí trago</h1><br />
+    <h1 class="display-4">Buscando mi trago</h1><br />
     <img src="https://www.thecocktaildb.com/images/cocktail_left.png" />
     <div>
        
         @using (Html.BeginForm("Search", "Search", FormMethod.Get))
         {
             <p>
-                Buscar por: @Html.TextBox("name")<br/>
+                Buscar por: @Html.TextBox("name")
                 <input type="submit" value="Buscar" class="btn btn-warning" />
             </p>
         }

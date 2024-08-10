@@ -39,25 +39,21 @@ namespace BuscandoMiTrago.Controllers
             if (response.IsSuccessStatusCode)
             {
                 string data = response.Content.ReadAsStringAsync().Result;
-
                 var obJson = JsonSerializer.Deserialize<BuscandoTragosResponse>(data);
-
-                VMBuscandoTragosResponse vm = new VMBuscandoTragosResponse();
                 foreach (var item in obJson.drinks)
                 {
-                    vm.idDrink = item.idDrink;
-                    vm.strDrink = item.strDrink;
-                    vm.strCategory = item.strCategory;
-                    vm.strDrinkAlternate = item.strDrinkAlternate;
-                    vm.strAlcoholic = item.strAlcoholic;
-                    vm.strGlass = item.strGlass;
-                    vm.strDrinkThumb = item.strDrinkThumb;
-                    lstBuscandoTrago.Add(vm);
+                    var lstObject = new VMBuscandoTragosResponse();
+                        lstObject.idDrink= item.idDrink;
+                        lstObject.strDrink = item.strDrink;
+                        lstObject.strCategory = item.strCategory;
+                        lstObject.strDrinkAlternate = item.strDrinkAlternate;
+                        lstObject.strAlcoholic = item.strAlcoholic;
+                        lstObject.strGlass = item.strGlass;
+                        lstObject.strDrinkThumb = item.strDrinkThumb;
+                        lstBuscandoTrago.Add(lstObject);
                 }
-                
-               
-                
-              
+
+
                 return View(lstBuscandoTrago);
 
             }

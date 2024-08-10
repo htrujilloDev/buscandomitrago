@@ -82,7 +82,8 @@
                 @Html.DisplayFor(modelItem => item.strInstructions)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.strDrinkThumb)
+                    <img src="@Html.DisplayFor(modelItem => item.strDrinkThumb)" class="img-thumbnail" />
+              
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
