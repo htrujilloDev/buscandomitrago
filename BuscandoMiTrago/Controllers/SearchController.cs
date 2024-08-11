@@ -49,11 +49,14 @@ namespace BuscandoMiTrago.Controllers
                         lstObject.strDrinkAlternate = item.strDrinkAlternate;
                         lstObject.strAlcoholic = item.strAlcoholic;
                         lstObject.strGlass = item.strGlass;
+                        lstObject.strInstructions= item.strInstructions;
                         lstObject.strDrinkThumb = item.strDrinkThumb;
                         lstBuscandoTrago.Add(lstObject);
                 }
 
 
+
+              
                 return View(lstBuscandoTrago);
 
             }

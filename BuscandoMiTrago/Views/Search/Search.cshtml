@@ -9,7 +9,8 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<div class="table-responsive">
+    <table class="table table-striped" ">
     <thead>
         <tr>
             <th>
@@ -18,7 +19,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.strDrink)
             </th>
-            <th>
+           @*  <th>
                 @Html.DisplayNameFor(model => model.strDrinkAlternate)
             </th>
             <th>
@@ -26,7 +27,7 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.strVideo)
-            </th>
+            </th> *@
             <th>
                 @Html.DisplayNameFor(model => model.strCategory)
             </th>
@@ -36,12 +37,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.strAlcoholic)
             </th>
-            <th>
+            @* <th>
                 @Html.DisplayNameFor(model => model.strGlass)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.strInstructions)
-            </th>
+            </th> *@
             <th>
                 @Html.DisplayNameFor(model => model.strDrinkThumb)
             </th>
@@ -49,7 +50,8 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model) 
+{
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.idDrink)
@@ -57,7 +59,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.strDrink)
             </td>
-            <td>
+            @* <td>
                 @Html.DisplayFor(modelItem => item.strDrinkAlternate)
             </td>
             <td>
@@ -65,7 +67,7 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.strVideo)
-            </td>
+            </td> *@
             <td>
                 @Html.DisplayFor(modelItem => item.strCategory)
             </td>
@@ -75,22 +77,81 @@
             <td>
                 @Html.DisplayFor(modelItem => item.strAlcoholic)
             </td>
-            <td>
+            @* <td>
                 @Html.DisplayFor(modelItem => item.strGlass)
-            </td>
-            <td>
+            </td> *@
+            @* <td>
                 @Html.DisplayFor(modelItem => item.strInstructions)
-            </td>
+            </td> *@
             <td>
-                    <img src="@Html.DisplayFor(modelItem => item.strDrinkThumb)" class="img-thumbnail" />
+                    <div class="thumbnail">
+                        <img src="@Html.DisplayFor(modelItem => item.strDrinkThumb)" style="width:30%" />
+                    </div>
               
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @*  @Html.ActionLink("Edit", "Edit", new { id = item.idDrink }) *@      
+                @* @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })  *@
+                @*  @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) *@
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detalleModal" data-bs-whatever=@Html.DisplayFor(modelItem => item.idDrink)>Detalle</button>
+
             </td>
         </tr>
 }
     </tbody>
 </table>
+</div>
+
+@functions {
+    public string GetSelection()
+    {
+            string id = "11007";
+            @if (Model != null)
+            {
+                var movies = Model.Where(s => s.idDrink.Equals(id)).FirstOrDefault().strInstructions;
+                return movies;
+            }
+            return null;
+    }
+}
+
+
+
+<div class="modal fade" id="detalleModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="detalleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detalleModalLabel">Mi bebida favorita</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>                    
+                    <div>
+                        <label for="message-text" class="col-form-label">Ingredientes: </label></br>
+                        @GetSelection()
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary">Agregar a favoritos</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var detalleModal = document.getElementById('detalleModal')
+    detalleModal.addEventListener('show.bs.modal', function (event) {
+        
+        var button = event.relatedTarget
+       
+        var recipient = button.getAttribute('data-bs-whatever')
+        
+        var modalTitle = detalleModal.querySelector('.modal-title')
+        var modalBodyInput = detalleModal.querySelector('.modal-body label')
+
+        modalTitle.textContent = 'Mi bebida favorita ' recipient
+        modalBodyInput.value = recipient
+    })
+</script>

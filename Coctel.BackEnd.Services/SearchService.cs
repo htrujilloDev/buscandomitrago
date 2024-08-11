@@ -41,5 +41,34 @@ namespace Coctel.BackEnd.Services
             }
             return null;
         }
+       
+        public async Task<Object> GstSearchByIngredient(string ingredient)
+        {
+            var sEndPoint = "https://www.thecocktaildb.com/api/json";
+            var url = $"{sEndPoint}/v1/1/search.php?i={ingredient}";
+
+        
+            try
+            {
+                using var httpClient = new HttpClient();
+                var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
+
+                var response = await httpClient.SendAsync(requestMessage);
+
+                if (response.StatusCode != System.Net.HttpStatusCode.Conflict)
+                {
+                    var obJson = JsonSerializer.Deserialize<BuscandoIngredientes>(await response.Content.ReadAsStringAsync());
+                    return obJson;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                // _logger.LogError(ex, "Failed to access EndPoint: " + url);
+
+            }
+            return null;
+        }
     }
 }

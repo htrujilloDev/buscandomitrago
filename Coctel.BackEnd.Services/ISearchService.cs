@@ -9,5 +9,6 @@ namespace Coctel.BackEnd.Services
     public interface ISearchService
     {
         Task<Object> GstSearchByName(string name);
+        Task<Object> GstSearchByIngredient(string ingredient);
     }
 }

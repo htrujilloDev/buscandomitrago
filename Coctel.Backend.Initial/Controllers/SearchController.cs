@@ -27,5 +27,16 @@ namespace Coctel.Backend.Initial.Controllers
 
             return Ok(response);
         }
+
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
+        public async Task<IActionResult> SearchByIngredient(string ingredient)
+        {
+            var response = await searchService.GstSearchByIngredient(ingredient);
+
+            return Ok(response);
+        }
     }
 }
