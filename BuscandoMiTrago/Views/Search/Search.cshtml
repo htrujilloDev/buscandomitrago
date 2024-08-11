@@ -19,15 +19,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.strDrink)
             </th>
-           @*  <th>
-                @Html.DisplayNameFor(model => model.strDrinkAlternate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.strTags)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.strVideo)
-            </th> *@
+          
             <th>
                 @Html.DisplayNameFor(model => model.strCategory)
             </th>
@@ -36,13 +28,7 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.strAlcoholic)
-            </th>
-            @* <th>
-                @Html.DisplayNameFor(model => model.strGlass)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.strInstructions)
-            </th> *@
+            </th>           
             <th>
                 @Html.DisplayNameFor(model => model.strDrinkThumb)
             </th>
@@ -58,16 +44,7 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.strDrink)
-            </td>
-            @* <td>
-                @Html.DisplayFor(modelItem => item.strDrinkAlternate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.strTags)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.strVideo)
-            </td> *@
+            </td>          
             <td>
                 @Html.DisplayFor(modelItem => item.strCategory)
             </td>
@@ -77,12 +54,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.strAlcoholic)
             </td>
-            @* <td>
-                @Html.DisplayFor(modelItem => item.strGlass)
-            </td> *@
-            @* <td>
-                @Html.DisplayFor(modelItem => item.strInstructions)
-            </td> *@
+           
             <td>
                     <div class="thumbnail">
                         <img src="@Html.DisplayFor(modelItem => item.strDrinkThumb)" style="width:30%" />
@@ -128,7 +100,11 @@
                 <form>                    
                     <div>
                         <label for="message-text" class="col-form-label">Ingredientes: </label></br>
-                        @GetSelection()
+                        <p>Rub the rim of the glass with the lime slice to make the salt stick to it. 
+                           Take care to moisten only the outer rim and sprinkle the salt on it. 
+                           The salt should present to the lips of the imbiber and never mix into the cocktail. 
+                           Shake the other ingredients with ice, then carefully pour into the glass.</p>
+
                     </div>
                 </form>
             </div>

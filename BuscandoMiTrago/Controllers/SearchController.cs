@@ -25,6 +25,12 @@ namespace BuscandoMiTrago.Controllers
             return View();
         }
 
+
+        /// <summary>
+        /// Método que realiza una busqueda por nombre de bebida
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>lstBuscandoTrago</returns>
         [HttpGet]
         public async Task<IActionResult> Search(string name)
         {
@@ -61,6 +67,47 @@ namespace BuscandoMiTrago.Controllers
 
             }
            return View(null);
+        }
+
+        /// <summary>
+        /// Método que permite buscar por ingrediente
+        /// </summary>
+        /// <param name="ingredient"></param>
+        /// <returns>lstBuscandoIngrediente</returns>
+        [HttpGet]
+        public async Task<IActionResult> SearchByIngredient(string ingredient)
+        {
+            
+            List<VMBuscandoIngrediente> lstBuscandoIngrediente = new List<VMBuscandoIngrediente>();
+
+            var sEndPoint = "https://localhost:7277/api";
+            var url = $"{sEndPoint}/Search/SearchByIngredient?ingredient={ingredient}";
+        
+
+
+            HttpResponseMessage response =  _httpClient.GetAsync(url).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                var obJson = JsonSerializer.Deserialize<BuscandoIngredientes>(data);
+                foreach (var item in obJson.ingredients)
+                {
+                    var lstObject = new VMBuscandoIngrediente();
+                    lstObject.idIngredient   = item.idIngredient;
+                    lstObject.strIngredient  = item.strIngredient;
+                    lstObject.strDescription = item.strDescription;
+                    lstObject.strType        = item.strType;
+                    lstObject.strAlcohol     = item.strAlcohol;
+                    lstObject.strABV         = item.strABV;
+
+                    lstBuscandoIngrediente.Add(lstObject);
+                }
+
+
+                return View(lstBuscandoIngrediente);
+
+            }
+            return View(null);
         }
 
 

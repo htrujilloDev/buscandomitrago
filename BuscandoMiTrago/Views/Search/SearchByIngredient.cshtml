@@ -1,0 +1,65 @@
+﻿@model IEnumerable<BuscandoMiTrago.Models.ViewModels.VMBuscandoIngrediente>
+
+@{
+    ViewData["Title"] = "Search By Ingredient";
+}
+
+<h1>SearchByIngredient</h1>
+
+@* <p>
+    <a asp-action="Create">Create New</a>
+</p> *@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.idIngredient)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.strIngredient)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.strDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.strType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.strAlcohol)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.strABV)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idIngredient)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.strIngredient)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.strDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.strType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.strAlcohol)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.strABV)
+            </td>
+            <td>
+               @*  @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) *@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
