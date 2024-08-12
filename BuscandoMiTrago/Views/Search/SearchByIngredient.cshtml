@@ -4,16 +4,16 @@
     ViewData["Title"] = "Search By Ingredient";
 }
 
-<h1>SearchByIngredient</h1>
+<h1>Search By Ingredient</h1>
 
 @* <p>
     <a asp-action="Create">Create New</a>
 </p> *@
-<table class="table table-striped">
+<table class="table table-striped" style="color:white">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.idIngredient)
+               @Html.DisplayNameFor(model => model.idIngredient)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.strIngredient)
@@ -36,22 +36,22 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
+                <td style="color:#feb704">
                 @Html.DisplayFor(modelItem => item.idIngredient)
             </td>
-            <td>
+                <td style="color:#feb704">
                 @Html.DisplayFor(modelItem => item.strIngredient)
             </td>
-            <td>
+                <td style="color:#feb704;text-align:justify">
                 @Html.DisplayFor(modelItem => item.strDescription)
             </td>
-            <td>
+                <td style="color:#feb704">
                 @Html.DisplayFor(modelItem => item.strType)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.strAlcohol)
             </td>
-            <td>
+                <td style="color:#feb704">
                 @Html.DisplayFor(modelItem => item.strABV)
             </td>
             <td>
